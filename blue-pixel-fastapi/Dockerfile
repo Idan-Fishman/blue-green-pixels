@@ -8,7 +8,7 @@ RUN apt-get update \
         build-essential
 
 # Create python dependencies wheels
-COPY requirements /tmp/requirements
+COPY requirements.txt /tmp/requirements.txt
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r /tmp/requirements.txt
 
 FROM python:3.11-alpine AS runner
