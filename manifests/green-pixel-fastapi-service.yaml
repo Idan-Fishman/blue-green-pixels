@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: blue-pixel-fastapi
+  name: green-pixel-fastapi
   namespace: blue-green-pixels
 spec:
   selector:
-    app: blue-pixel-fastapi
+    app: green-pixel-fastapi
   ports:
     - port: 8000
       targetPort: 8000
