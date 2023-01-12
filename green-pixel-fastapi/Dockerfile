@@ -1,8 +1,6 @@
 # Build dependencies only when needed
 FROM python:3.11-slim-bullseye AS builder
 
-ARG BUILD_ENVIRONMENT=production
-
 # Install apt packages
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -11,7 +9,7 @@ RUN apt-get update \
 
 # Create python dependencies wheels
 COPY requirements /tmp/requirements
-RUN pip wheel --wheel-dir /usr/src/app/wheels -r /tmp/requirements/${BUILD_ENVIRONMENT}.txt
+RUN pip wheel --wheel-dir /usr/src/app/wheels -r /tmp/requirements.txt
 
 FROM python:3.11-alpine AS runner
 
