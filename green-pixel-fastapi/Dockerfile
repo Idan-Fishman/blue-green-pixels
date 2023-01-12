@@ -11,7 +11,7 @@ RUN apt-get update \
 COPY requirements.txt /tmp/requirements.txt
 RUN pip wheel --wheel-dir /usr/src/app/wheels -r /tmp/requirements.txt
 
-FROM python:3.11-alpine AS runner
+FROM python:3.11-slim-bullseye AS runner
 
 ENV PYTHONBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
