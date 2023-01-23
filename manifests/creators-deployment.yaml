@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: creators
+  namespace: blue-green-pixels
+  labels:
+    app: creators
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: creators
+  template:
+    metadata:
+      labels:
+        app: creators
+    spec:
+      containers:
+        - name: creators
+          image: ghcr.io/idan-fishman/blue-green-pixels-creators:latest
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always

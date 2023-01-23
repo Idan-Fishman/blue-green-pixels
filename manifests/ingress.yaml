@@ -25,3 +25,17 @@ spec:
                 name: green-pixel-fastapi
                 port:
                   number: 8000
+          - path: /creators/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: creators
+                port:
+                  number: 8000
+          - path: /rollout-status/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: rollout-status
+                port:
+                  number: 3000

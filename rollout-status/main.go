@@ -81,7 +81,7 @@ func main() {
 	app.Use(logger.New())
 	app.Use(favicon.New())
 
-	app.Get("/ping", func(c *fiber.Ctx) error {
+	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("pong! 🏓")
 	})
 

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rollout-status
+  namespace: blue-green-pixels
+data:
+  POSTGRES_HOST: "postgres.blue-green-pixels.svc.cluster.local "
+  POSTGRES_PORT: "5432"
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: mysecretpassword123
+  POSTGRES_DATABASE: postgres

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-pixel-golang
+  namespace: blue-green-pixels
+  labels:
+    app: green-pixel-golang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green-pixel-golang
+  template:
+    metadata:
+      labels:
+        app: green-pixel-golang
+    spec:
+      containers:
+        - name: green-pixel-golang
+          image: ghcr.io/idan-fishman/blue-green-pixels-green-pixel-golang:latest
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always
