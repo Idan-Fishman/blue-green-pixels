@@ -36,7 +36,7 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
 WORKDIR /app
 COPY --chown=fastapi:fastapi . .
 
-USER fastapi
+USER fastapi:fastapi
 
 EXPOSE 8000
 

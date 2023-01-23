@@ -1,11 +1,11 @@
-name: green-fastapi-ci
+name: blue-golang-ci
 
 on:
   push:
     branches:
       - main
     paths:
-      - "green-pixel-fastapi/**"
+      - "blue-pixel-golang/**"
   workflow_dispatch:
 
 jobs:
@@ -35,10 +35,10 @@ jobs:
       - name: Build, tag, and push Docker image to GitHub Container Registry
         uses: docker/build-push-action@v3
         with:
-          context: ./green-pixel-fastapi
+          context: ./blue-pixel-golang
           push: true
           tags: |
-            ghcr.io/${{ steps.string.outputs.lowercase }}-green-pixel-fastapi:${{ github.sha }}
-            ghcr.io/${{ steps.string.outputs.lowercase }}-green-pixel-fastapi:latest
+            ghcr.io/${{ steps.string.outputs.lowercase }}-blue-pixel-golang:${{ github.sha }}
+            ghcr.io/${{ steps.string.outputs.lowercase }}-blue-pixel-golang:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
