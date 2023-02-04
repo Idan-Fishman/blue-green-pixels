@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: green-pixel-golang
+  name: blue-pixel
   namespace: blue-green-pixels
 spec:
   selector:
-    app: green-pixel-golang
+    app: blue-pixel
   ports:
     - port: 8000
       targetPort: 8000

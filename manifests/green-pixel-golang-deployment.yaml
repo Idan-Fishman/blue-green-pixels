@@ -3,17 +3,15 @@ kind: Deployment
 metadata:
   name: green-pixel-golang
   namespace: blue-green-pixels
-  labels:
-    app: green-pixel-golang
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: green-pixel-golang
+      app: green-pixel
   template:
     metadata:
       labels:
-        app: green-pixel-golang
+        app: green-pixel
     spec:
       containers:
         - name: green-pixel-golang

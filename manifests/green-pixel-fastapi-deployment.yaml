@@ -3,17 +3,15 @@ kind: Deployment
 metadata:
   name: green-pixel-fastapi
   namespace: blue-green-pixels
-  labels:
-    app: green-pixel-fastapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: green-pixel-fastapi
+      app: green-pixel
   template:
     metadata:
       labels:
-        app: green-pixel-fastapi
+        app: green-pixel
     spec:
       containers:
         - name: green-pixel-fastapi
