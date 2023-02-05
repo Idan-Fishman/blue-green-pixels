@@ -7,7 +7,7 @@ export const Creators = (props) => {
     <>
       {creators.map((creator) => (
         <Typography key={creator.ssn}>
-          {creator.name} {creator.ssn}
+          {creator.name} - {creator.ssn}
         </Typography>
       ))}
     </>

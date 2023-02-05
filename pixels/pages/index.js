@@ -14,11 +14,8 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("fetching");
         const response = await axios.get("http://localhost/blue");
-        const json = await response.json();
-        console.log(json);
-        setBlueColor(json);
+        setBlueColor(response.data);
       } catch (error) {
         setBlueColor({ light_hexa: "#F24C4C", dark_hexa: "#D92027" });
       }
@@ -30,9 +27,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost/green");
-        const json = await response.json();
-        console.log(json);
-        setGreenColor(json);
+        setGreenColor(response.data);
       } catch (error) {
         setGreenColor({ light_hexa: "#FAEAB1", dark_hexa: "#FFCD3C" });
       }
@@ -44,9 +39,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost/creators");
-        const json = await response.json();
-        console.log(json);
-        setCreators(json);
+        setCreators(response.data);
       } catch (error) {
         setCreators([{ name: "Dani Almog", ssn: "123456789" }]);
       }
@@ -54,41 +47,53 @@ const Home = () => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   let intervalId;
-  //   if (isRandomOn) {
-  //     intervalId = setInterval(() => {
-  //       fetch("http://localhost/rollout-status/random")
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setRolloutStatus(data.status);
-  //           console.log(data);
-  //         });
-  //     }, 5000);
-  //   }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          "http://localhost/rollout-status/random"
+        );
+        setRolloutStatus(response.data.status);
+      } catch (error) {
+        setRolloutStatus(0);
+      }
+    };
 
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, [isRandomOn]);
+    let intervalId;
+    if (isRandomOn) {
+      intervalId = setInterval(() => {
+        fetchData();
+      }, 5000);
+    }
 
-  // useEffect(() => {
-  //   let intervalId;
-  //   if (!isRandomOn) {
-  //     intervalId = setInterval(() => {
-  //       fetch("http://localhost/rollout-status/status")
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           setRolloutStatus(data.status);
-  //           console.log(data);
-  //         });
-  //     }, 2000);
-  //   }
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [isRandomOn]);
 
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, [!isRandomOn]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost/rollout-status/status"
+        );
+        setRolloutStatus(response.data.status);
+      } catch (error) {
+        setRolloutStatus(0);
+      }
+    };
+
+    let intervalId;
+    if (!isRandomOn) {
+      intervalId = setInterval(() => {
+        fetchData();
+      }, 2000);
+    }
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [!isRandomOn]);
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -103,7 +108,8 @@ const Home = () => {
         <Box>
           <Status status={rolloutStatus} />
         </Box>
-        <Box>
+        {/* <Box></Box> */}
+        <Box sx={{ mt: 20 }}>
           <Creators creators={creators} />
         </Box>
       </Box>
