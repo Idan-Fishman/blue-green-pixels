@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
+import axios from "axios";
 import Status from "@/components/status";
 import Creators from "@/components/creators";
 
@@ -13,40 +14,44 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost/blue");
+        console.log("fetching");
+        const response = await axios.get("http://localhost/blue");
         const json = await response.json();
+        console.log(json);
         setBlueColor(json);
       } catch (error) {
         setBlueColor({ light_hexa: "#F24C4C", dark_hexa: "#D92027" });
       }
-      fetchData();
     };
+    fetchData();
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost/green");
+        const response = await axios.get("http://localhost/green");
         const json = await response.json();
-        setGreenColor(json.data);
+        console.log(json);
+        setGreenColor(json);
       } catch (error) {
         setGreenColor({ light_hexa: "#FAEAB1", dark_hexa: "#FFCD3C" });
       }
-      fetchData();
     };
+    fetchData();
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost/creators");
+        const response = await axios.get("http://localhost/creators");
         const json = await response.json();
+        console.log(json);
         setCreators(json);
       } catch (error) {
         setCreators([{ name: "Dani Almog", ssn: "123456789" }]);
       }
-      fetchData();
     };
+    fetchData();
   }, []);
 
   // useEffect(() => {

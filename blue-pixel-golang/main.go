@@ -16,7 +16,9 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		blue := Color{Color: "blue", LightHexa: "#2684FC", DarkHexa: "#0066DA"}
 
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Content-Type", "application/json")
+
 		json.NewEncoder(w).Encode(blue)
 	})
 
