@@ -15,14 +15,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: blue-pixel-fastapi
+                name: blue-pixel
                 port:
                   number: 8000
           - path: /green/?(.*)
             pathType: Prefix
             backend:
               service:
-                name: green-pixel-fastapi
+                name: green-pixel
                 port:
                   number: 8000
           - path: /creators/?(.*)
