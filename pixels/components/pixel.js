@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 export const Pixel = (props) => {
   const { light_hexa, dark_hexa } = props;
-  const [colorIndex, setColorIndex] = useState(0);
+  const [colorIndex, setColorIndex] = useState(Math.floor(Math.random() * 3));
   const colors = ["#DDDDDD", light_hexa, dark_hexa];
 
   useEffect(() => {

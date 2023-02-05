@@ -107,9 +107,7 @@ func main() {
 	})
 
 	app.Post("/random", func(c *fiber.Ctx) error {
-		blue := rand.Intn(50) + 50
-		green := 100 - blue
-		return c.JSON(fiber.Map{"blue": blue, "green": green})
+		return c.JSON(fiber.Map{"status": rand.Intn(50) + 50})
 	})
 
 	app.Listen(":3000")
