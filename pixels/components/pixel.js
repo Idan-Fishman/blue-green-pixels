@@ -21,8 +21,8 @@ export const Pixel = (props) => {
   return (
     <Box
       sx={{
-        width: 42,
-        height: 42,
+        width: 50,
+        height: 50,
         bgcolor: colors[colorIndex],
         borderRadius: 1,
         transition: "background-color 1s ease-in-out",
