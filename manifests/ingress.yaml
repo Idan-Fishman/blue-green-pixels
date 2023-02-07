@@ -11,6 +11,13 @@ spec:
   rules:
     - http:
         paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: blue-pixel
+                port:
+                  number: 3000
           - path: /blue/?(.*)
             pathType: Prefix
             backend:
